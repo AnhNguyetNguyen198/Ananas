@@ -1,0 +1,327 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Ananas.MasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Ananas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* HEADER */
+        .task-bar {
+            background-color: #303030;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 30px;
+        }
+
+        .task-item {
+            padding: 0 20px;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+            .task-item img {
+                width: 20px;
+                height: auto;
+            }
+
+            .task-item a {
+                color: white;
+                text-decoration: none;
+            }
+
+            .task-item:hover a {
+                color: #ed6a32;
+            }
+
+        .menu-bar {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            height: 100px;
+        }
+
+        .menu-logo img {
+            height: 80px;
+        }
+
+        .menu-item {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+            .menu-item a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .menu-item:hover a {
+                color: #ed6a32;
+            }
+
+            /* SEARCH AND SORT */
+            .menu-item select {
+                padding: 5px 10px;
+                border: 1px solid #ddd;
+                font-size: 14px;
+                border-radius: 5px;
+            }
+
+            .menu-item input {
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                font-size: 14px;
+                width: 200px;
+            }
+
+            .menu-item button {
+                background-color: #ed6a32;
+                color: white;
+                padding: 7px 15px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+                .menu-item button:hover {
+                    background-color: #d15c27;
+                }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #444, #222);
+            color: white;
+            padding: 40px 0;
+        }
+
+        .myFooter {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .myFooter1 {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+            .myFooter1 h2 {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 15px;
+                color: #fff;
+            }
+
+            .myFooter1 h3 {
+                font-size: 16px;
+                color: #ccc;
+                margin: 5px 0;
+            }
+
+            .myFooter1 a {
+                text-decoration: none;
+                color: #ccc;
+            }
+
+                .myFooter1 a:hover {
+                    color: #ed6a32;
+                }
+
+        .social img {
+            width: 35px;
+            height: 35px;
+            margin: 0 10px;
+            transition: opacity 0.3s ease;
+            object-fit: contain;
+        }
+
+        .footer-button {
+            background-color: #ed6a32;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+            .footer-button:hover {
+                background-color: #d15c27;
+            }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #222;
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .menu-bar {
+                flex-direction: column;
+                padding: 10px 20px;
+                text-align: center;
+            }
+
+            .myFooter {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .myFooter1 {
+                margin-bottom: 30px;
+            }
+
+            .footer-button {
+                width: 80%;
+            }
+        }
+
+        .task-item #welcomeSection {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="task-bar">
+        <div class="task-item">
+            <img src="Hinh/GioHang.png" />
+            <a href="GioHang.aspx">Giỏ hàng</a>
+        </div>
+        <% if (Session["MaNguoiDung"] == null)
+            {
+            %>
+        <div class="task-item" id="loginLink" runat="server">
+            <img src="Hinh/DangNhap.png" />
+            <a href="DangNhap.aspx">Đăng nhập</a>
+        </div>
+        <%
+            }
+            else
+            {
+            %>
+        <div class="task-item" id="welcomeSection" runat="server">
+            <span id="welcomeMessage" runat="server"></span></div>
+        <div class="task-item">
+            <a href="DangXuat.aspx" id="logoutLink">Đăng xuất</a>
+        </div>
+
+        <div class="task-item" id="Account" runat="server">
+            <a href="TaiKhoan.aspx">Tài khoản</a>
+        </div>
+        <%
+            } %>
+    </div>
+
+
+    <!-- MENU -->
+    <div class="menu-bar">
+        <div class="menu-logo">
+            <a href="TrangChu.aspx">
+                <img src="Hinh/Logo.png" alt="Ananas Logo"></a>
+        </div>
+        <div class="menu-item">
+            <a href="SanPham.aspx">ALL</a>
+        </div>
+        <div class="menu-item">
+            <a href="Shoes.aspx">Shoes</a>
+        </div>
+        <div class="menu-item">
+            <a href="Tote_Bag.aspx">Tote Bag</a>
+        </div>
+        <div class="menu-item">
+            <a href="Socks.aspx">Socks</a>
+        </div>
+        <div class="menu-item">
+            <input id="searchInput" placeholder="Tìm kiếm" />
+            <button onclick="performSearch()">Tìm</button>
+        </div>
+        <div class="menu-item">
+            <select id="sortOptions" onchange="sortProducts()">
+                <option value="none">Không sắp xếp</option>
+                <option value="priceAsc">Giá thấp đến cao</option>
+                <option value="priceDesc">Giá cao đến thấp</option>
+            </select>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <footer>
+        <div class="myFooter">
+            <div class="myFooter">
+                <div class="myFooter1">
+                    <img src="Hinh/Store.png" />
+                    <button class="footer-button">Tìm cửa hàng</button>
+                </div>
+                <div class="myFooter1">
+                    <h2>Sản phẩm</h2>
+                    <a href="Shoes.aspx">
+                        <h3>Shoes</h3>
+                    </a>
+                    <a href="Tote_bag.aspx">
+                        <h3>Tote Bag</h3>
+                    </a>
+                    <a href="Socks.aspx">
+                        <h3>Socks</h3>
+                    </a>
+                    <br />
+                    <h2>Ananas Social</h2>
+                    <div class="social">
+                        <a href="https://www.facebook.com/Ananas.vietnam/">
+                            <img src="Hinh/fb.png" /></a>
+                        <a href="https://www.instagram.com/ananasvn/">
+                            <img src="Hinh/ig.png" /></a>
+                        <a href="https://www.youtube.com/discoveryou">
+                            <img src="Hinh/yt.png" /></a>
+                    </div>
+                </div>
+                <div class="myFooter1">
+                    <h2>Liên hệ</h2>
+                    <h3>Email góp ý</h3>
+                    <h3>Hotline</h3>
+                    <h3>0967867339</h3>
+                </div>
+                <div class="myFooter1">
+                    <h2>Hỗ trợ</h2>
+                    <h3>FAQs</h3>
+                    <h3>Bảo mật thông tin</h3>
+                    <h3>Chính sách chung</h3>
+                    <h3>Tra cứu đơn hàng</h3>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <h4>Designed by Nguyễn Lê Ánh Nguyệt</h4>
+        </div>
+    </footer>
+</body>
+</html>

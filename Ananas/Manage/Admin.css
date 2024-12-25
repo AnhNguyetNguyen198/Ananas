@@ -1,0 +1,210 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh; /* Đảm bảo toàn bộ chiều cao màn hình */
+    flex-direction: column;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+}
+
+    .sidebar .logo {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .sidebar nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+        .sidebar nav ul li {
+            margin: 15px 0;
+        }
+
+            .sidebar nav ul li a {
+                color: #ecf0f1;
+                text-decoration: none;
+                padding: 10px;
+                display: block;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+                .sidebar nav ul li a:hover {
+                    background-color: #34495e;
+                }
+
+                .sidebar nav ul li a.active {
+                    background-color: #2980b9;
+                }
+
+/* Main Content */
+.main-content {
+    margin-left: 240px; /* Đẩy nội dung sang bên phải để không bị che bởi sidebar */
+    margin-top: 20px; /* Đẩy xuống để không bị che bởi header */
+    padding: 20px;
+    background-color: #f4f7fa;
+    height: calc(100vh - 60px); /* Chiều cao màn hình trừ đi chiều cao header */
+    overflow-y: auto; /* Nếu nội dung quá dài, cho phép cuộn */
+}
+
+/* Header */
+.header {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 290px; /* Phải đồng bộ với chiều rộng sidebar */
+    right: 0;
+    height: 60px; /* Chiều cao header */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .header input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+/* Content */
+.content {
+    margin-top: 60px; /* Đẩy nội dung xuống dưới header */
+    padding: 20px;
+}
+
+/* Định dạng Modal */
+.modal {
+    display: none; /* Ban đầu ẩn modal */
+    position: fixed; /* Vị trí cố định */
+    z-index: 1050; /* Đảm bảo Modal luôn hiển thị phía trên */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ đen */
+}
+
+/* Modal Dialog */
+.modal-dialog {
+    position: relative;
+    margin: 10% auto; /* Căn giữa modal */
+    width: fit-content; /* Chiếm 80% chiều rộng màn hình */
+}
+
+/* Nội dung Modal */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+}
+
+/* Định dạng tiêu đề Modal */
+.modal-header {
+    display: flex;
+    line-height: 1.2;
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+}
+
+/* Tiêu đề Modal */
+.modal-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Nút đóng Modal */
+.close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #000;
+    cursor: pointer;
+}
+
+    .close:hover {
+        color: #f00;
+    }
+
+/* Định dạng Modal Body */
+.modal-body {
+    padding: 0px 0;
+}
+
+/* Định dạng các form-group bên trong Modal */
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+.form-control {
+    width: 250px;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Định dạng các nút trong Modal */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+    .modal-footer button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .modal-footer .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .modal-footer .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+/* Hiệu ứng hiển thị modal */
+.modal.show {
+    display: block;
+    align-content: center;
+}
+
+/* Nếu Modal có scroll nội dung dài */
+.modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+}

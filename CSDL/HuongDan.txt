@@ -1,0 +1,22 @@
+Trường Đại học Tài chính - Marketing 
+Đồ án môn Lập trình Web
+Đề tài: Xây dựng website cửa hàng Ananas
+Giảng viên hướng dẫn: ThS. Nguyễn Thanh Trường
+Mã lớp học phần: 2331112005701
+Sinh viên thực hiện: Nguyễn Lê Ánh Nguyệt - 2121013309
+
+**************** Hướng dẫn chạy Website **************** 
+1. Kết nối SQL
+ 	+ Đổi tên lớp kết nối
+2. Chạy Default.aspx
+	+ Đăng nhập vào hệ thống 
+	 	*Tài khoản admin: admin, Mật khẩu: 1234567@  
+		* Tài khoản khách hàng: nguyet, Mật khẩu: 12346567@
+	+ Đăng xuất để thoát khỏi website
+3. Tiến hành chọn các chức năng theo nhu cầu sử dụng
+	+ Admin: Xem, xóa, sửa
+	+ Khách hàng: Chọn sản phẩm, giỏ hàng, thông báo đơn đặt hàng
+4. Ở trang DangKy.aspx 
+	+ thêm file Register.txt vào phần mail definition
+Lưu ý: Đổi tên lớp kết nối ở Web config
+
